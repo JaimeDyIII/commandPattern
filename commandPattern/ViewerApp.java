@@ -11,12 +11,13 @@ public class ViewerApp {
 
         Light lights = new Light();
         Thermostat thermostat = new Thermostat();
+        Speaker speaker = new Speaker();
         RemoteControl rc = new RemoteControl();
 
         while(cont){
             
             System.out.print("______________________________________\n");
-            System.out.print("\nChoose which appliance to control\n1. Lights\n2. Thermostat\n3. Music Player\n4. Exit\nChoice: ");
+            System.out.print("\nChoose which appliance to control\n1. Lights\n2. Thermostat\n3. Speaker\n4. Exit\nChoice: ");
             choice = input.nextInt();
             System.out.print("______________________________________\n");
 
@@ -26,14 +27,14 @@ public class ViewerApp {
                     
                     if(lights.checkLightState())
                     {
-                        System.out.print("\nLights are currently on!\nSwitch it on?(y/n): ");
+                        System.out.print("\nLights are currently on!\nSwitch it on?\n1. Yes\n2. No\nChoice: ");
                     }
                     else
                     {
-                        System.out.print("\nLights are currently off!\nSwitch it on?(y/n): ");
+                        System.out.print("\nLights are currently off!\nSwitch it off?\n1. Yes\n2. No\nChoice: ");
                     }
 
-                    String yesOrNo = input.next().toLowerCase();
+                    Integer yesOrNo = input.nextInt();
 
                     if(lights.checkLightState())
                     {
@@ -45,14 +46,14 @@ public class ViewerApp {
                     } 
 
                     switch (yesOrNo) {
-                        case "y":
+                        case 1:
                             rc.clickButton();
                             break;
-                        case "n":
+                        case 2:
                             System.out.println("Lights stays on!\n");
                             break;
                         default:
-                            System.out.println("\nEnter (y or n)\n!");
+                            System.out.println("\nEnter (y or n)!\n");
                             break;
                     }
 
@@ -102,7 +103,54 @@ public class ViewerApp {
                         }
                     break;
                 
-                case 3: System.out.println("\nNo commands yet");
+                case 3: Command speakerPowerOff = new SpeakerPowerOff(speaker);
+                        Command speakerPowerOn = new SpeakerPowerOn(speaker);
+                        Command increaseVolume = new IncreaseVolume(speaker);
+                        Command decreaseVolume = new DecreaseVolume(speaker);
+
+                        if(speaker.checkSpeakerState())
+                        {
+                            System.out.println("\nSpeaker is currently on!\n\nWhat do you want to do?\n1. Power off\n2. Increase Volume\n3. Decrease Volume\n4. Exit");
+                        }
+                        else
+                        {
+                            System.out.println("\nSpeaker is currently off!\n\nPower on?\n1. Power on\n2. Exit");
+                        }
+
+                        int speakerChoice = input.nextInt();
+
+                        if(speaker.checkSpeakerState())
+                        {
+                            switch(speakerChoice){
+                                case 1: rc.setCommand(speakerPowerOff);
+                                    rc.clickButton();
+                                    break;
+
+                                case 2: rc.setCommand(increaseVolume);
+                                    rc.clickButton();
+                                    break;
+
+                                case 3: rc.setCommand(decreaseVolume);
+                                    rc.clickButton();
+                                    break;
+                                
+                                case 4: break;
+                                default: System.out.println("Enter valid choice!");
+                            }
+                        }
+                        else
+                        {
+                            switch (speakerChoice) {
+                                case 1: rc.setCommand(speakerPowerOn);
+                                    rc.clickButton();
+                                    break;
+                                
+                                case 2: break;
+
+                                default:
+                                    break;
+                            }
+                        }
                     break;
 
                 case 4: System.out.println("\nExitting...");
