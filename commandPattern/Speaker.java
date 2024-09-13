@@ -1,4 +1,4 @@
-
+package commandPattern;
 
 public class Speaker {
     private Boolean isSpeakerSwitchedOn = false;
