@@ -52,9 +52,7 @@ public class ViewerApp {
                         case 2:
                             System.out.println("Lights stays on!\n");
                             break;
-                        default:
-                            System.out.println("\nEnter (y or n)!\n");
-                            break;
+                        default: System.out.println("Enter Valid Choice!\n");
                     }
 
                     break;
@@ -70,7 +68,7 @@ public class ViewerApp {
                         }
                         else
                         {
-                            System.out.print("\nThermostat is currently on!\n\nWhat do you want to do?\n1. Power On \n2. Exit\nChoice: ");
+                            System.out.print("\nThermostat is currently off!\n\nWhat do you want to do?\n1. Power On \n2. Exit\nChoice: ");
                         }
 
                         int thermoChoice = input.nextInt();
@@ -99,6 +97,8 @@ public class ViewerApp {
                                 break;
 
                                 case 2: break;
+
+                                default: System.out.println("Enter Valid Choice!\n");
                             }
                         }
                     break;
@@ -110,11 +110,11 @@ public class ViewerApp {
 
                         if(speaker.checkSpeakerState())
                         {
-                            System.out.println("\nSpeaker is currently on!\n\nWhat do you want to do?\n1. Power off\n2. Increase Volume\n3. Decrease Volume\n4. Exit");
+                            System.out.print("\nSpeaker is currently on!\n\nWhat do you want to do?\n1. Power off\n2. Increase Volume\n3. Decrease Volume\n4. Exit\nChoide: ");
                         }
                         else
                         {
-                            System.out.println("\nSpeaker is currently off!\n\nPower on?\n1. Power on\n2. Exit");
+                            System.out.print("\nSpeaker is currently off!\n\nPower on?\n1. Power on\n2. Exit\nCHoice: ");
                         }
 
                         int speakerChoice = input.nextInt();
@@ -147,8 +147,7 @@ public class ViewerApp {
                                 
                                 case 2: break;
 
-                                default:
-                                    break;
+                                default: System.out.println("Enter valid choice!");
                             }
                         }
                     break;
