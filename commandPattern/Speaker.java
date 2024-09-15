@@ -15,13 +15,11 @@ public class Speaker {
     }
 
     public void increaseVolume(){
-        System.out.println("Increase Volume?(y/n): ");
         volume++;
         System.out.println("Volume is now set at: " + volume);
     }
 
     public void decreaseVolume(){
-        System.out.println("Decrease Volume?(y/n): ");
         volume--;
         System.out.println("Volume is now set at: " + volume);
     }     
@@ -31,3 +29,4 @@ public class Speaker {
         return isSpeakerSwitchedOn;
     }
 }
+
